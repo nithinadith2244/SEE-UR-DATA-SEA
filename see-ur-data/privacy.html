@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="What SEE UR DATA SEA stores (nothing), what it sends and to whom, and what it never asks for.">
+  <title>Privacy - SEE UR DATA SEA </title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <canvas id="cyber-canvas" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="#3dd6f5" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="#3dd6f5"/></svg><span>SEE UR DATA SEA</span></a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="methodology.html">Methodology</a></li>
+          <li><a href="limitations.html">Limitations</a></li>
+          <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="wrap doc">
+      <h1>Privacy</h1>
+      <div class="callout">
+        <p>This text describes what the software does. The person or organisation running a deployment of it must review it, add who they are, and add anything their local law requires.</p>
+      </div>
+
+      <h2>What this site stores</h2>
+      <p>Nothing. It sets no cookies, uses no analytics or advertising scripts, and does not use local storage, session storage or IndexedDB. Searches are not saved, there is no search history and there are no accounts. If you reload the page, everything you typed and every result is gone. This site's server does not log or keep addresses.</p>
+
+      <h2>What happens when you press Check email</h2>
+      <p>The address is sent to a breach-lookup service so it can be checked. By default that is XposedOrNot, a free service that needs no key. Your browser asks it directly, and the address is part of that request, as the service's interface requires. XposedOrNot's own privacy policy applies to what it receives, and this site cannot see or control that.</p>
+      <p>If your browser cannot reach XposedOrNot directly, the page retries once through this site's own server, which asks XposedOrNot for you and passes the answer back. The server keeps nothing, and it appears to XposedOrNot as the requester, not you.</p>
+      <p>If the site operator has switched to the paid Have I Been Pwned service instead, the address goes to this site's server, which holds that service's key in a server-only setting, never in your browser, and asks Have I Been Pwned. The page always names the service that is in use beside the search box.</p>
+
+      <h2>Test mode</h2>
+      <p>An operator using Have I Been Pwned can run a separate test mode that answers only for that service's synthetic test addresses and says so on screen. Test mode refuses real addresses and never shows test data for them.</p>
+
+      <h2>Hosting</h2>
+      <p>Like any website, the host that serves these pages may keep ordinary server logs of page requests, such as IP address and time. Those logs do not contain what you type into the search box, because it is never sent to the host.</p>
+
+      <h2>Request limits</h2>
+      <p>To avoid request floods and to respect the free service's limits, the page counts how many checks you have started since it was opened, and the server limits requests per IP address and overall. Both keep only timestamps in memory, never addresses, and forget them on reload or restart.</p>
+
+      <h2>What we will never ask for</h2>
+      <p>Passwords, authentication codes or account credentials. If anything on or about this site asks for them, do not enter them.</p>
+
+      <h2>Questions</h2>
+      <p>See the <a href="contact.html">contact page</a>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="methodology.html">Methodology</a></li>
+        <li><a href="limitations.html">Limitations</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <p>SEE UR DATA SEA is an independent project. It is not affiliated with, endorsed by or sponsored by any breach-notification service or breach-data provider.</p>
+      <p>A result, or the lack of one, is information and not a guarantee about your accounts.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/motion.js"></script>
+</body>
+</html>

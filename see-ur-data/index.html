@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Check whether an email address appears in publicly documented data breaches. Source-attributed results, no tracking, no stored searches.">
+  <title>SEE UR DATA SEA - Know what the internet knows about you</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <canvas id="cyber-canvas" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="#3dd6f5" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="#3dd6f5"/></svg><span>SEE UR DATA SEA</span></a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="methodology.html">Methodology</a></li>
+          <li><a href="limitations.html">Limitations</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="wrap">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="hero-eyebrow"><span class="signal-dot" aria-hidden="true"></span> PRIVACY INTELLIGENCE <span class="eyebrow-divider" aria-hidden="true"></span> LIVE LOOKUP</p>
+            <h1 id="page-title">Know what the <span class="headline-accent">internet knows</span> about you.</h1>
+            <p class="lede">Check whether an email address appears in publicly documented data breaches. Every result names its source, and nothing is ever made up.</p>
+          </div>
+
+          <div class="hero-console-wrap">
+            <div class="console">
+              <div class="console-topline" aria-hidden="true"><span class="console-label"><span class="terminal-dot"></span> EXPOSURE SCANNER</span><span class="console-status"><span class="signal-dot"></span> READY</span></div>
+              <form id="check-form" novalidate autocomplete="off">
+                <label class="field-label" for="email">
+                  Email address
+                  <span class="field-hint" id="email-hint">Only enter your own address, or one you have permission to check. Never enter a password.</span>
+                </label>
+                <div class="field-row">
+                  <input id="email" type="email" inputmode="email" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="254" aria-describedby="email-hint email-error" placeholder="name@example.com">
+                  <button id="submit" class="btn btn-primary" type="submit">Check email</button>
+                </div>
+                <p id="email-error" class="field-error" role="alert" hidden></p>
+                <div class="btn-row">
+                  <button id="cancel" class="btn btn-quiet" type="button" hidden>Cancel</button>
+                  <button id="clear" class="btn btn-quiet" type="button">Clear</button>
+                </div>
+                <p id="provider-status" class="provider-status provider-off">
+                  <noscript>This site needs JavaScript to run a check. Nothing is sent anywhere without it.</noscript>
+                </p>
+              </form>
+            </div>
+
+            <h2 id="results-label" class="visually-hidden">Results</h2>
+            <div id="results" class="results-region" aria-labelledby="results-label" aria-live="polite" aria-busy="false"></div>
+            <div class="scanner-footnote" aria-hidden="true"><span class="scanner-line"></span><span>CHECK SOURCES. PROTECT WHAT MATTERS.</span><span class="scanner-coordinates">SYD / 01</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="outcomes-title">
+        <h2 id="outcomes-title">Three outcomes, never blurred together</h2>
+        <p>A breach lookup can end in three different ways. This site keeps them visibly separate, with plain labels instead of colour alone.</p>
+        <ul class="outcomes">
+          <li class="outcome outcome-breach">
+            <h3>Listed in a documented breach</h3>
+            <p>A named source returned a record for this address. You see which breach, when, what kind of data was exposed, and a link to the source where one exists.</p>
+          </li>
+          <li class="outcome outcome-clear">
+            <h3>0 known breaches found</h3>
+            <p>The source explicitly reported no record. This is not a promise of safety: breaches can be unreported, unindexed or outside the source's coverage.</p>
+          </li>
+          <li class="outcome outcome-unavailable">
+            <h3>Unavailable or inconclusive</h3>
+            <p>The lookup could not give an answer: no provider configured, a network error, a rate limit or a response we could not verify. It says nothing either way.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="principles-title">
+        <h2 id="principles-title">How this site treats your data</h2>
+        <ul class="principles">
+          <li><strong>No accounts, no history</strong><span>Searches are not saved and there is nowhere to log in.</span></li>
+          <li><strong>No analytics or cookies</strong><span>This site loads no tracking scripts, fonts or images from other sites.</span></li>
+          <li><strong>No invented results</strong><span>Results come only from a configured provider and are checked before display.</span></li>
+          <li><strong>No secrets in the page</strong><span>The free lookup needs no key. Any optional paid key lives only on the server.</span></li>
+        </ul>
+        <p>Read the <a href="methodology.html">methodology</a>, the <a href="limitations.html">limitations</a> and the <a href="privacy.html">privacy policy</a> for the details.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="methodology.html">Methodology</a></li>
+        <li><a href="limitations.html">Limitations</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <p>SEE UR DATA SEA is an independent project. It is not affiliated with, endorsed by or sponsored by any breach-notification service or breach-data provider.</p>
+      <p>A result, or the lack of one, is information and not a guarantee about your accounts.</p>
+    </div>
+  </footer>
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="How SEE UR DATA produces breach-check results, what each outcome means and how wrong answers are prevented.">
+  <title>Methodology - SEE UR DATA SEA</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <canvas id="cyber-canvas" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="#3dd6f5" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="#3dd6f5"/></svg><span>SEE UR DATA SEA</span></a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="methodology.html" aria-current="page">Methodology</a></li>
+          <li><a href="limitations.html">Limitations</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="wrap doc">
+      <h1>Methodology</h1>
+      <p>This page explains exactly how a result is produced, so you can judge how far to trust it.</p>
+
+      <h2>Where results come from</h2>
+      <p>SEE UR DATA does not hold a breach database. It asks an external breach-data service about the address you enter and shows what that service reports. The default is XposedOrNot's free API, which needs no key and no account; an operator can instead use Have I Been Pwned with a paid key that exists only on the server. The browser never holds a key.</p>
+      <div class="callout">
+        <p><strong>Free-tier limits are real.</strong> The free service allows a small number of lookups per hour and per day for each internet address, and describes itself as meant for personal and low-volume use. When a limit is reached you see "Unavailable" with a retry hint, never a guess. If the server has nothing configured at all, you see "Live email breach lookup is not configured yet."</p>
+      </div>
+
+      <h2>How the service's answers are interpreted</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col">Service answer</th><th scope="col">What you see</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Breach records in a well-formed answer</th><td>Listed in a documented breach, with details and source.</td></tr>
+            <tr><th scope="row">The service's documented, complete "nothing found" answer (XposedOrNot: an empty result; Have I Been Pwned: a genuine HTTP 404)</th><td>No match found, with the caveat that this is not a promise of safety.</td></tr>
+            <tr><th scope="row">Rate limit (HTTP 429)</th><td>Unavailable, with a retry hint.</td></tr>
+            <tr><th scope="row">Rejected credentials (401) or denied access (403), Have I Been Pwned only</th><td>Unavailable, with a distinct message.</td></tr>
+            <tr><th scope="row">Server errors, timeouts, network failures, unreadable or unexpected answers</th><td>Unavailable. Never shown as "no match".</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>The three outcomes</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col">Outcome</th><th scope="col">When it is shown</th><th scope="col">What it does not mean</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Listed in a documented breach</th><td>The provider returned a well-formed record for the address and at least one record is marked verified by the provider.</td><td>It does not mean the data was or is being misused.</td></tr>
+            <tr><th scope="row">No match found</th><td>The provider returned its documented, complete "nothing found" answer.</td><td>It does not mean the address is safe or was never exposed.</td></tr>
+            <tr><th scope="row">Unavailable or inconclusive</th><td>Anything else: no provider, network failure, timeout, rate limit, an unrecognised response, or matches that the source has not verified.</td><td>It is not a result in either direction.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Safeguards against wrong answers</h2>
+      <ul>
+        <li>Results can only be created by a small set of validated constructors. Anything else is discarded.</li>
+        <li>Provider responses must match a documented shape exactly. A response that is partly unreadable is rejected as a whole instead of being partially trusted.</li>
+        <li>An HTTP error, a missing field or an unexpected shape never turns into "no match".</li>
+        <li>Text from a provider is displayed as plain text, and links are shown only if they are absolute https addresses.</li>
+        <li>Each result shows its data source and a link to it.</li>
+      </ul>
+
+      <h2>Input handling</h2>
+      <p>The address is trimmed, checked against a conservative email format, and converted to lower case before lookup. Addresses with non-English characters are not supported yet.</p>
+
+      <h2>Providers considered</h2>
+      <p>The project's <code>docs/PROVIDERS.md</code> records the options examined, their limits and what could and could not be verified. XposedOrNot is the default free service. Have I Been Pwned needs a paid key, so it is used from the server only.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="methodology.html">Methodology</a></li>
+        <li><a href="limitations.html">Limitations</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <p>SEE UR DATA SEA is an independent project. It is not affiliated with, endorsed by or sponsored by any breach-notification service or breach-data provider.</p>
+      <p>A result, or the lack of one, is information and not a guarantee about your accounts.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/motion.js"></script>
+</body>
+</html>

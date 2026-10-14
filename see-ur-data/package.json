@@ -1,0 +1,19 @@
+{
+  "name": "see-ur-data",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Privacy-first email breach checker. Static front end plus a small server-side Have I Been Pwned integration; the API key never reaches the browser. No analytics, no storage.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node server/start.mjs",
+    "dev:test": "node server/start.mjs --test-mode",
+    "test": "node --test",
+    "test:integration": "node scripts/integration-test-hibp.mjs",
+    "check": "node scripts/check-links.mjs",
+    "verify:free-api": "node scripts/verify-free-api.mjs"
+  },
+  "license": "UNLICENSED"
+}
